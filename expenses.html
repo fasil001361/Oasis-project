@@ -9,26 +9,32 @@
 
     <div class="container">
 
+        <!-- Back button -->
         <a href="index.html" class="back">← Back to Home</a>
 
         <h2>Expenses</h2>
 
-        <!-- Details -->
-        <div class="field">
-            <label>Details</label>
-            <input type="text" id="details" placeholder="Enter Details" />
-        </div>
+        <!-- Wrap inputs in a form -->
+        <form id="expenseForm">
 
-        <!-- Amount -->
-        <div class="field hidden" id="amountBox">
-            <label>Amount</label>
-            <input type="text" id="amount" placeholder="Enter Amount" />
-        </div>
+            <!-- Details -->
+            <div class="field">
+                <label>Details</label>
+                <input type="text" id="details" placeholder="Enter Details" autocomplete="off" />
+            </div>
 
-        <!-- Save Button -->
-        <div class="saveBox hidden" id="saveBox">
-            <button id="saveBtn">Save</button>
-        </div>
+            <!-- Amount -->
+            <div class="field hidden" id="amountBox">
+                <label>Amount</label>
+                <input type="number" id="amount" placeholder="Enter Amount" autocomplete="off" />
+            </div>
+
+            <!-- Save Button -->
+            <div class="saveBox hidden" id="saveBox">
+                <button type="submit" id="saveBtn">Save</button>
+            </div>
+
+        </form>
 
         <p id="status"></p>
 
