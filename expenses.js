@@ -1,4 +1,3 @@
-// URL of Google Script
 const scriptURL = "https://script.google.com/macros/s/AKfycbxnC1TDSrsHXZjntXZG7Qr7FipF15WL_YXsPAoMT2xMyk_MRpmMgDJmRUq9lsbXOTWH/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -7,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const amountInput = document.getElementById("amount");
     const amountBox = document.getElementById("amountBox");
     const saveBox = document.getElementById("saveBox");
-    const saveBtn = document.getElementById("saveBtn");
     const statusText = document.getElementById("status");
+    const form = document.getElementById("expenseForm");
 
     // Show amount box when details entered
     detailsInput.addEventListener("input", function () {
@@ -29,27 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Move focus on Enter key
-    detailsInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            if (detailsInput.value.trim() !== "") {
-                amountInput.focus();
-            }
+    // Handle form submit (Enter works on mobile)
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent page reload
+
+        if (document.activeElement === detailsInput && detailsInput.value.trim() !== "") {
+            // Enter pressed in Details → focus Amount
+            amountInput.focus();
+        } else if (document.activeElement === amountInput && amountInput.value.trim() !== "") {
+            // Enter pressed in Amount → save
+            saveExpense();
         }
     });
 
-    amountInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-            e.preventDefault();
-            if (amountInput.value.trim() !== "") {
-                saveBtn.click(); // trigger save
-            }
-        }
-    });
-
-    // Save button click
-    saveBtn.addEventListener("click", function () {
+    function saveExpense() {
         const data = {
             details: detailsInput.value,
             amount: amountInput.value
@@ -62,14 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(() => {
             statusText.innerText = "Expense Added Successfully!";
-            // Wait 1 second, then refresh to reset form
             setTimeout(() => {
-                window.location.reload();
+                window.location.reload(); // refresh after 1 second
             }, 1000);
         })
         .catch(error => {
             statusText.innerText = "Error sending data";
         });
-    });
+    }
+
+    // Save button click also triggers save
+    document.getElementById("saveBtn").addEventListener("click", saveExpense);
 
 });
