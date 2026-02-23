@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuttipiriv - Club Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="kuttipiriv.css">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Kuttipiriv</h1>
+    <p class="subtitle">Group Collections & Details</p>
+</header>
+
+<main class="kuttipiriv-page">
+
+    <div class="back-container">
+        <a href="index.html" class="back-btn">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            Back to Home
+        </a>
+    </div>
+
+    <div class="form-container">
+
+        <!-- Book Number -->
+        <div class="input-group">
+            <label>Book Number</label>
+            <input type="number" id="bookNumber" placeholder="Enter Book Number">
+        </div>
+
+        <!-- Range Section -->
+        <div id="rangeSection" class="hidden">
+            <div class="input-group">
+                <label>Start Number</label>
+                <input type="number" id="startNumber">
+            </div>
+
+            <div class="input-group">
+                <label>Upto Number</label>
+                <input type="number" id="uptoNumber">
+            </div>
+
+            <div class="input-group">
+                <label>End Number</label>
+                <input type="number" id="endNumber">
+            </div>
+
+            <button id="confirmRangeBtn" class="primary-btn">Confirm Range</button>
+        </div>
+
+        <!-- Finance Section -->
+        <div id="financeSection" class="hidden">
+
+            <div class="input-group">
+                <label>Total Amount</label>
+                <input type="number" id="totalAmount">
+            </div>
+
+            <div class="input-group">
+                <label>Online Payment</label>
+                <input type="number" id="onlinePayment">
+            </div>
+
+            <div class="input-group">
+                <label>Expenses</label>
+                <input type="number" id="expenses">
+            </div>
+
+            <div class="result-box">
+                <p id="liquidDisplay">Liquid = ₹0.00</p>
+                <p id="finalTotalDisplay">Total: ₹0.00</p>
+            </div>
+
+            <button id="saveExportBtn" class="primary-btn">Save & Export</button>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="kuttipiriv.js"></script>
+</body>
+</html>
