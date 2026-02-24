@@ -1,0 +1,136 @@
+/* ===== Google Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+/* ===== Root Colors ===== */
+:root {
+    --primary: #1690cd;
+    --primary-dark: #3e8e41;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: white;
+    --light: white;
+    --border: #e0e0e0;
+}
+
+/* ===== Global Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ===== Main Card ===== */
+.container {
+    width: 95%;
+    max-width: 400px;
+    background: var(--card);
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+}
+
+/* ===== Back Button ===== */
+.back {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.back:hover {
+    color: var(--primary-dark);
+}
+
+/* ===== Heading ===== */
+h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* ===== Fields ===== */
+.field {
+    text-align: left;
+    margin-bottom: 18px;
+    transition: 0.3s ease;
+}
+
+.field label {
+    font-size: 13px;
+    color: var(--light);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.field input {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.field input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+/* ===== Save Button Box ===== */
+.saveBox {
+    margin-top: 10px;
+}
+
+/* ===== Button ===== */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ===== Status Message ===== */
+#status {
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* ===== Hidden Class ===== */
+.hidden {
+    display: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+}
