@@ -24,6 +24,7 @@ async function fetchSheet1() {
 // Fetch Expenses
 async function fetchExpenses() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${EXPENSES_ID}/values/Expenses?key=${API_KEY}`;
+
     const response = await fetch(url);
     const data = await response.json();
 
@@ -42,25 +43,19 @@ async function fetchExpenses() {
     return expenseSum;
 }
 
-// Load and display data
 async function loadData() {
     try {
-        const sheet1 = await fetchSheet1();
-        const expenses = await fetchExpenses();
+        const res = await fetch("https://script.google.com/macros/s/AKfycbx04xdPkQo-0ysoQsmDXzk5qPoHrOV2HWAR7puPBjvDjbVmwMrRtPrzV4gbTgqTmxC4/exec");
+        const data = await res.json();
 
-        const profit = sheet1.totalFinalSum - expenses;
+        document.getElementById("kuttipiriv").innerText = "₹ " + data.totalSum;
+        document.getElementById("expenses").innerText = "₹ " + data.expenseSum;
+        document.getElementById("profit").innerText = "₹ " + data.profit;
 
-        document.getElementById("kuttipiriv").innerText = "₹ " + sheet1.totalSum;
-        document.getElementById("expenses").innerText = "₹ " + expenses;
-        document.getElementById("profit").innerText = "₹ " + profit;
-
-    } catch (error) {
-        console.error("Error:", error);
+    } catch (err) {
+        console.error("Error fetching report:", err);
     }
 }
 
-// Initial load
 loadData();
-
-// Poll every 10 seconds (10000 ms) to refresh the data
-setInterval(loadData, 10000);
+setInterval(loadData, 1000); // refresh every 2 seconds
