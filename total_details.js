@@ -24,7 +24,6 @@ async function fetchSheet1() {
 // Fetch Expenses
 async function fetchExpenses() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${EXPENSES_ID}/values/Expenses?key=${API_KEY}`;
-
     const response = await fetch(url);
     const data = await response.json();
 
@@ -43,6 +42,7 @@ async function fetchExpenses() {
     return expenseSum;
 }
 
+// Load and display data
 async function loadData() {
     try {
         const sheet1 = await fetchSheet1();
@@ -59,4 +59,8 @@ async function loadData() {
     }
 }
 
+// Initial load
 loadData();
+
+// Poll every 10 seconds (10000 ms) to refresh the data
+setInterval(loadData, 10000);
